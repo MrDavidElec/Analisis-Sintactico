@@ -2,7 +2,7 @@
 if (isset($_POST['expresion'])) {
     $expresion = trim($_POST['expresion']);
 
-    // Expresión regular extendida: acepta id+id, id-id*id/id, etc.
+    // Expresión regular extendida: acepta id+id, id-id*id/id
     if (preg_match('/^id(\s*[\+\-\*\/]\s*id)+$/', $expresion)) {
         echo "<p class='correcto'>✅ Correcto</p>";
     } else {

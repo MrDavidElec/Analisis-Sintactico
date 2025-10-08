@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validador de Expresiones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Validador de Expresiones</h2>
+
+        <form id="formulario">
+            <input type="text" name="expresion" id="expresion" placeholder="Ejemplo: id-id*id/id" required>
+            <br>
+            <input type="submit" value="CC">
+            <button type="button" onclick="window.close()">EXT</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+<script>
+    document.getElementById("formulario").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let formData = new FormData(this);
+
+      fetch("G6.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("resultado").innerHTML = data;
+      })
+      .catch(() => {
+        document.getElementById("resultado").innerHTML = "Error en la validacion ❌";
+      });
+    });
+  </script>
+</body>
+</html>
